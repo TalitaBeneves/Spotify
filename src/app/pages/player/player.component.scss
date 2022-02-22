@@ -1,0 +1,6 @@
+@import "variaveis";
+
+:host {
+  display: flex;
+  background-color: $cor-fundo;
+}
