@@ -2,13 +2,51 @@
   <div class="image-container flex flex-center">
     <img src="assets/images/Spotify_Logo_White.png" alt="logo_spotify" />
   </div>
+
   <div class="menu-container flex opcoes">
-    <app-botao-menu [descricao]="'Home'">
-      
+    <app-botao-menu
+      [descricao]="'Home'"
+      [selecionado]="menuAtivo === 'Home'"
+      (click)="botaoAtivo('Home')"
+    >
+      <i class="bi bi-house-door-fill"></i>
     </app-botao-menu>
-    <app-botao-menu [descricao]="'Buscar'">
+
+    <app-botao-menu
+      [descricao]="'Buscar'"
+      [selecionado]="menuAtivo === 'Buscar'"
+      (click)="botaoAtivo('Buscar')"
+    >
+      <i class="bi bi-search-heart-fill"></i>
     </app-botao-menu>
-    <app-botao-menu [descricao]="'Artistas'">
+
+    <app-botao-menu
+      [descricao]="'Artistas'"
+      [selecionado]="menuAtivo === 'Artistas'"
+      (click)="botaoAtivo('Artistas')"
+    >
+      <i class="bi bi-file-music-fill"></i>
     </app-botao-menu>
   </div>
+
+  <div class="menu-container flex">
+    <span class="playlist-titulo">
+      PLAYLISTS
+    </span>
+
+    <div class="playlist-scroll">
+      <app-botao-menu
+        *ngFor="let playlist of playlists"
+        [descricao]="playlist.nome"
+        [selecionado]="menuSelecionado === playlist.id"
+        (click)="irParaPlaylist(playlist.id)"
+      >
+        <i class="bi bi-music-note-list"></i>
+      </app-botao-menu>
+    </div>
+  </div>
 </div>
+
+  <div class="usuario-info">
+    <app-rodape-user></app-rodape-user>
+  </div>

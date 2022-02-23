@@ -1,5 +1,8 @@
-<button type="button">
+<button type="button"
+  [class.selecionado]="selecionado"
+  (click)="onClick()">
   <ng-content></ng-content>
-  <i class="bi bi-alarm">{{ descricao }} </i>
-
+  <span>
+    {{ descricao }}
+  </span>
 </button>

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { SpotifyConfig } from 'src/environments/environment';
+import { Router } from '@angular/router';
 import Spotify from 'spotify-web-api-js';
-import { IUsuario } from '../pages/Interfaces/IUsuario';
-import { async } from '@angular/core/testing';
-import { SpotifyUserParaUsuario } from '../Common/spotifyHelpers';
+import { SpotifyConfig } from 'src/environments/environment';
+import { SpotifyPlaylistParaPlaylist, SpotifyUserParaUsuario } from '../common/spotifyHelpers';
+import { IPlaylist } from '../Interfaces/IPlaylist';
+import { IUsuario } from '../Interfaces/IUsuario';
 
 @Injectable({
   providedIn: 'root',
@@ -12,31 +13,29 @@ export class SpotifyService {
   spotifyAPI: Spotify.SpotifyWebApiJs = null;
   usuario: IUsuario;
 
-  constructor() {
+  constructor(private router: Router) {
     this.spotifyAPI = new Spotify();
   }
 
   async iniciarUsuario() {
-    if (!!this.usuario)
-      return true;
+    if (!!this.usuario) return true;
 
     const token = localStorage.getItem('token');
 
-    if (!token)
-      return false;
+    if (!token) return false;
 
     try {
       this.definirAcessoToken(token);
-      await this.obterSpotifyUser();
+      await this.obterSpotifyUsuario();
       return !!this.usuario;
-    }
-    catch (error) {
+    } catch (error) {
       return false;
     }
   }
 
-  async obterSpotifyUser() {
+  async obterSpotifyUsuario() {
     const userInfo = await this.spotifyAPI.getMe();
+    console.log(userInfo)
     this.usuario = SpotifyUserParaUsuario(userInfo);
   }
 
@@ -49,7 +48,7 @@ export class SpotifyService {
     return authEndpoint + clientId + redirectUrl + scopes + responseType;
   }
 
-  obterTokenCallBack() {
+  obterTokenCallback() {
     if (!location.hash) return '';
 
     const params = location.hash.substring(1).split('&');
@@ -59,5 +58,15 @@ export class SpotifyService {
   definirAcessoToken(token: string) {
     this.spotifyAPI.setAccessToken(token);
     localStorage.setItem('token', token);
+  }
+
+  async buscarPlaylistUsuario(offset = 0, limit = 50): Promise<IPlaylist[]> {
+    const playlists = await this.spotifyAPI.getUserPlaylists();
+    return playlists.items.map(SpotifyPlaylistParaPlaylist)
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
   }
 }

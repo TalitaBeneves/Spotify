@@ -1,7 +1,14 @@
-$cor-fundo: rgb(192, 228, 192);
-$cor-primaria: #fff;
-$h-spotify-logo: 120px;
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 
+$cor-fundo: rgb(192, 228, 192);
+$cor-primaria: #37AB00;
 $cor-fundo-menu: rgba(255, 255, 255, 0.685);
+$preto-transp-30: #00004da1;
+
+$h-spotify-logo: 120px;
 $h-menu-opcoes: 150px;
+$h-footer-user: 70px;
+$h-desconsiderar: calc($h-spotify-logo + $h-menu-opcoes + $h-footer-user);
+
 $m-entre-menu: 10px;
+

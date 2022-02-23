@@ -2,5 +2,10 @@
 
 :host {
   display: flex;
-  background-color: $cor-fundo;
+
+  .rotas-container {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 }
