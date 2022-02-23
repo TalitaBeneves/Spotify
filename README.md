@@ -1,4 +1,5 @@
 # Spotify
+![image](https://user-images.githubusercontent.com/83943087/155407033-437d868e-dc75-4149-8e21-c8e9e47f5119.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.4.
 
