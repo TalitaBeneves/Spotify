@@ -1,4 +1,8 @@
 # Spotify
+# Listando o Top 5
+![image](https://user-images.githubusercontent.com/83943087/155583343-0fc6c04e-1dd3-4dc6-9e92-c54b32df63da.png)
+
+# Listando as músicas
 ![image](https://user-images.githubusercontent.com/83943087/155407033-437d868e-dc75-4149-8e21-c8e9e47f5119.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.4.
