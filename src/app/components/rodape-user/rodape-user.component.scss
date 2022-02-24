@@ -1,14 +1,13 @@
 @import 'variaveis';
 
 div{
-
   padding: 5px 30px;
   justify-content: space-between;
   align-items: center;
   height: 100%;
   width: 100%;
   color: $cor-primaria;
-  border-top: 1px solid $preto-transp-30;
+  border-top: 1px solid $branco;
 
   img {
     flex-grow: 0;

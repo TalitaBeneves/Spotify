@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rodape-user.component.scss'],
 })
 export class RodapeUserComponent implements OnInit {
-  usuario: IUsuario;
+  usuario: IUsuario = null;
 
   constructor(
     private spotifyService: SpotifyService

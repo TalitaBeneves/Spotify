@@ -9,6 +9,7 @@
   background-color: $cor-fundo-menu;
   box-shadow: 1px 1px 15px #0101115d;
 
+
   .menu {
     flex: 1;
     flex-direction: column;
@@ -18,9 +19,11 @@
 
   .image-container {
     min-height: $h-spotify-logo;
+    color: $branco;
+    font-size: 20px;
 
     img {
-      width: 70%;
+      width: 80%;
     }
   }
 
@@ -41,16 +44,15 @@
       }
       * {
         margin-bottom: $m-entre-menu;
-        flex-direction: column;
       }
     }
 
     .playlist-titulo {
-      margin: 10px 0px;
+      margin: 20px 110px 20px 0px;
       align-items: flex-start;
       font-weight: 700;
-      font-size: .7rem;
-      color: $preto-transp-30;
+      font-size: .8rem;
+      color: $branco;
     }
 
     .playlist-scroll {

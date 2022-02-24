@@ -24,12 +24,12 @@
       text-overflow: ellipsis;
     }
 
-    color: $cor-primaria;
+    color: $yellowgreen;
     background-color: transparent;
 
     &.selecionado {
-      background-color: $cor-primaria;
-      color: #fff;
+      background-color: $yellowgreen;
+      color: $branco;
     }
 
   }
