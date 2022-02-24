@@ -1,4 +1,6 @@
 @import 'variaveis';
+@import 'table';
+
 
 :host {
   display: flex;
@@ -8,7 +10,6 @@
     width: 7px;
 
     &-thumb {
-      background-color: red;
       border-radius: 10px;
     }
 
@@ -32,4 +33,6 @@
   .painel-direito {
     height: 100vh;
   }
+
+
 }

@@ -18,13 +18,14 @@
     }
 
     button {
-      font-size: 1rem;
       min-width: 200px;
-      padding: 10px;
-      border-radius: 500px;
-      background-color: $cor-primaria;
-      color: #fff;
+      padding: 20px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      border-radius: 30px;
       border: 0;
+      color: $cor-fundo-menu;
+      background-color: $yellowgreen;
       cursor: pointer;
     }
   }

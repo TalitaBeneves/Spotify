@@ -1,5 +1,5 @@
 export interface IUsuario {
   id: string;
-  user: string;
+  nome: string;
   imagemUrl: string;
 }

@@ -1,15 +1,60 @@
-import { Component, OnInit } from '@angular/core';
+import { PlayerService } from './../../services/player.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { IMusica } from './../../Interfaces/IMusica';
+import { SpotifyService } from './../../services/spotify.service';
+import { newMusica } from 'src/app/common/factories';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+  musicas: IMusica[] = [];
+  play: boolean = false;
+  musicaAtual: IMusica = newMusica();
+  subs: Subscription[] = [];
 
-  constructor() { }
+  constructor(
+    private spotifyService: SpotifyService,
+    private playerService: PlayerService
+  ) {}
 
   ngOnInit(): void {
+    this.obterMusicas();
+    this.obterMusicaAtual();
   }
 
+  async obterMusicas() {
+    this.musicas = await this.spotifyService.buscarMusicas();
+  }
+
+  obterArtistas(musica: IMusica) {
+    return musica.artistas.map((artista) => artista.nome).join(', ');
+  }
+
+  obterMusicaAtual() {
+    const sub = this.playerService.musicaAtual.subscribe((musica) => {
+      this.musicaAtual = musica;
+    });
+
+    this.subs.push(sub);
+  }
+
+  async executarMusica(musica: IMusica) {
+    await this.spotifyService.executarMusica(musica.id);
+    this.playerService.definirMusicaAtual(musica);
+  }
+
+  onClickPlay() {
+    !this.play;
+    ('bi bi-play-circle');
+    this.play;
+    ('bi bi-pause-circle-fill');
+  }
+
+  ngOnDestroy() {
+    this.subs.forEach((sub) => sub.unsubscribe());
+  }
 }
