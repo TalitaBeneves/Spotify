@@ -3,7 +3,7 @@ import { IArtista } from '../Interfaces/IArtista';
 import { IMusica } from '../Interfaces/IMusica';
 import { IPlaylist } from '../Interfaces/IPlaylist';
 import { IUsuario } from '../Interfaces/IUsuario';
-import { newMusica } from './factories';
+import { newMusica, newPlaylist } from './factories';
 
 export function SpotifyUserParaUsuario( user: SpotifyApi.CurrentUsersProfileResponse ): IUsuario {
   return {
@@ -20,6 +20,19 @@ export function SpotifyPlaylistParaPlaylist( playlist: SpotifyApi.PlaylistObject
     imagemUrl: ''
   };
 }
+
+export function SpotifySinglePlaylistParaPlaylist(playlist: SpotifyApi.SinglePlaylistResponse ): IPlaylist {
+  if (!playlist)
+    return newPlaylist();
+
+  return {
+    id: playlist.id,
+    nome: playlist.name,
+    imagemUrl: playlist.images.shift().url,
+    musicas: []
+  }
+}
+
 export function SpotifyArtistaParaArtista( spotifyArtista: SpotifyApi.ArtistObjectFull ): IArtista {
   return {
     id: spotifyArtista.id,
@@ -43,7 +56,7 @@ export function SpotifyTrackParaMusica(spotifyTrack: SpotifyApi.TrackObjectFull)
     titulo: spotifyTrack.name,
     album: {
       id: spotifyTrack.id,
-      imagemUrl: spotifyTrack.album.images.pop().url,
+      imagemUrl: spotifyTrack.album.images.shift().url,
       nome: spotifyTrack.album.name
     },
     artistas: spotifyTrack.artists.map(artista => ({

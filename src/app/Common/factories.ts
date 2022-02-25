@@ -1,5 +1,6 @@
 import { IMusica } from './../Interfaces/IMusica';
 import { IArtista } from './../Interfaces/IArtista';
+import { IPlaylist } from '../Interfaces/IPlaylist';
 
 export function newArtista(): IArtista {
   return {
@@ -23,11 +24,11 @@ export function newMusica(): IMusica {
   }
 }
 
-// export function newPlaylist(): IPlaylist {
-//   return {
-//     id: '',
-//     imagemUrl: '',
-//     nome: '',
-//     musicas: []
-//   }
-// }
+export function newPlaylist(): IPlaylist {
+  return {
+    id: '',
+    imagemUrl: '',
+    nome: '',
+    musicas: []
+  }
+}

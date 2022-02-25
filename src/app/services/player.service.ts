@@ -1,3 +1,4 @@
+import { async } from '@angular/core/testing';
 import { SpotifyService } from './spotify.service';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
@@ -27,5 +28,21 @@ export class PlayerService {
 
   definirMusicaAtual(musica: IMusica) {
     this.musicaAtual.next(musica);
+  }
+
+  comecarMusica(){
+    this.spotifyService.comecarMusica();
+  }
+
+  pausarMusica(){
+    this.spotifyService.pausarMusica();
+  }
+
+  voltarMusica(){
+    this.spotifyService.voltarMusica();
+  }
+
+  proximaMusica(){
+    this.spotifyService.proximaMusica();
   }
 }

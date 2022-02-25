@@ -26,11 +26,6 @@
     font-weight: 600;
     border-bottom: 1px solid gray;
     color: $branco;
-
-    &.left{
-      width: 4px;
-      background-color: red;
-    }
   }
 
   th, td {
@@ -50,7 +45,6 @@
 
       td {
         color: $yellowgreen;
-        // font-size: 15px;
       }
     }
 

@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   async obterMusicas() {
     this.musicas = await this.spotifyService.buscarMusicas();
+
   }
 
   obterArtistas(musica: IMusica) {
@@ -37,6 +38,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   obterMusicaAtual() {
     const sub = this.playerService.musicaAtual.subscribe((musica) => {
       this.musicaAtual = musica;
+      console.log(this.musicaAtual)
     });
 
     this.subs.push(sub);
@@ -45,13 +47,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   async executarMusica(musica: IMusica) {
     await this.spotifyService.executarMusica(musica.id);
     this.playerService.definirMusicaAtual(musica);
-  }
 
-  onClickPlay() {
-    !this.play;
-    ('bi bi-play-circle');
-    this.play;
-    ('bi bi-pause-circle-fill');
   }
 
   ngOnDestroy() {

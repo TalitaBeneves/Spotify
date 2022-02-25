@@ -4,7 +4,13 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import Spotify from 'spotify-web-api-js';
 import { SpotifyConfig } from 'src/environments/environment';
-import { SpotifyArtistaParaArtista, SpotifyPlaylistParaPlaylist, SpotifyTrackParaMusica, SpotifyUserParaUsuario } from '../common/spotifyHelpers';
+import {
+  SpotifyArtistaParaArtista,
+  SpotifyPlaylistParaPlaylist,
+  SpotifySinglePlaylistParaPlaylist,
+  SpotifyTrackParaMusica,
+  SpotifyUserParaUsuario,
+} from '../common/spotifyHelpers';
 import { IPlaylist } from '../Interfaces/IPlaylist';
 import { IUsuario } from '../Interfaces/IUsuario';
 
@@ -37,7 +43,7 @@ export class SpotifyService {
 
   async obterSpotifyUsuario() {
     const userInfo = await this.spotifyAPI.getMe();
-    console.log(userInfo)
+    console.log(userInfo);
     this.usuario = SpotifyUserParaUsuario(userInfo);
   }
 
@@ -62,21 +68,34 @@ export class SpotifyService {
     localStorage.setItem('token', token);
   }
 
-  async buscarPlaylistUsuario(offset = 0, limit = 50):Promise<IPlaylist[]> {
+  async buscarPlaylistUsuario(offset = 0, limit = 50): Promise<IPlaylist[]> {
     const playlists = await this.spotifyAPI.getUserPlaylists();
-    console.log(playlists)
-    return playlists.items.map(SpotifyPlaylistParaPlaylist)
+    console.log(playlists);
+    return playlists.items.map(SpotifyPlaylistParaPlaylist);
   }
 
-  async buscarTopArtistas(limit = 10):Promise<IArtista[]>{
-    const artistas = await this.spotifyAPI.getMyTopArtists({ limit })
+  async buscarMusicasPlaylist(playlistId: string, offset = 0, limit = 50) {
+    const playlistSpotify = await this.spotifyAPI.getPlaylist(playlistId);
+
+    if (!playlistSpotify)
+      return null;
+
+    const playlist = SpotifySinglePlaylistParaPlaylist(playlistSpotify);
+    const musicasSpotify = await this.spotifyAPI.getPlaylistTracks(playlistId, { offset, limit });
+    playlist.musicas =  musicasSpotify.items.map(musica => SpotifyTrackParaMusica(musica.track as SpotifyApi.TrackObjectFull));
+
+    return playlist;
+  }
+
+  async buscarTopArtistas(limit = 10): Promise<IArtista[]> {
+    const artistas = await this.spotifyAPI.getMyTopArtists({ limit });
     console.log(artistas);
     return artistas.items.map(SpotifyArtistaParaArtista);
   }
 
-  async buscarMusicas(offset = 0, limit = 50):Promise<IMusica[]> {
+  async buscarMusicas(offset = 0, limit = 50): Promise<IMusica[]> {
     const musicas = await this.spotifyAPI.getMySavedTracks({ offset, limit });
-    return musicas.items.map(x => SpotifyTrackParaMusica(x.track));
+    return musicas.items.map((x) => SpotifyTrackParaMusica(x.track));
   }
 
   async executarMusica(musicaId: string) {
@@ -84,10 +103,26 @@ export class SpotifyService {
     await this.spotifyAPI.skipToNext();
   }
 
-  async obterMusicaAtual():Promise<IMusica>{
+  async obterMusicaAtual(): Promise<IMusica> {
     const musicaSpotify = await this.spotifyAPI.getMyCurrentPlayingTrack();
     return SpotifyTrackParaMusica(musicaSpotify.item);
-    }
+  }
+
+  async comecarMusica() {
+    await this.spotifyAPI.play();
+  }
+
+  async pausarMusica() {
+    await this.spotifyAPI.pause();
+  }
+
+  async voltarMusica() {
+    await this.spotifyAPI.skipToPrevious();
+  }
+
+  async proximaMusica() {
+    await this.spotifyAPI.skipToNext();
+  }
 
   logout() {
     localStorage.clear();

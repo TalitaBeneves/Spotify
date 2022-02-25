@@ -1,3 +1,5 @@
+import { IArtista } from './../../Interfaces/IArtista';
+import { SpotifyService } from 'src/app/services/spotify.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Top5Component implements OnInit {
 
-  constructor() { }
+  artistas: IArtista[] = []
+
+  constructor(private spotifyService: SpotifyService) { }
 
   ngOnInit(): void {
+    this.buscarTopArtistas();
+  }
+
+  async buscarTopArtistas(){
+    this.artistas = await this.spotifyService.buscarTopArtistas();
+    console.log(this.artistas)
   }
 
 }
