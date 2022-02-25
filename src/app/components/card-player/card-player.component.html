@@ -1,0 +1,16 @@
+<div class="container card p-10">
+  <div
+    class="image"
+    [style.background-image]="'url(' + musica.album.imagemUrl + ')'"
+  ></div>
+  <div class="controles">
+    <span class="nomeMusica">{{ musica.titulo }}</span> <br />
+    <span>{{ obterArtistas(musica) }}</span>
+
+    <div class="botoes">
+      <i class="bi bi-skip-start-fill" (click)="proximaMusica()"></i>
+      <i [class]="play" id="text" (click)="trocarIcon()"></i>
+      <i class="bi bi-skip-end-fill" (click)="voltarMusica()"></i>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+@import 'variaveis';
+
+.container {
+  align-items: center;
+  padding: 5px 0px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $preto-transp-9;
+  }
+
+  img {
+    width: 50px;
+    border-radius: 50%;
+    flex-grow: 0;
+  }
+
+  span {
+    color: $branco;
+    flex-grow: 1;
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+  }
+}
