@@ -1,4 +1,9 @@
 # Spotify
+
+# Projeto quase finalizado
+![image](https://user-images.githubusercontent.com/83943087/155654768-7934ad67-01ae-48b2-a4ec-da87961d366c.png)
+
+
 # Listando o Top 5
 ![image](https://user-images.githubusercontent.com/83943087/155583343-0fc6c04e-1dd3-4dc6-9e92-c54b32df63da.png)
 
