@@ -47,7 +47,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   async executarMusica(musica: IMusica) {
     await this.spotifyService.executarMusica(musica.id);
     this.playerService.definirMusicaAtual(musica);
-
   }
 
   ngOnDestroy() {

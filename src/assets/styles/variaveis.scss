@@ -16,3 +16,16 @@ $h-desconsiderar: calc($h-spotify-logo + $h-menu-opcoes + $h-footer-user);
 
 $m-entre-menu: 10px;
 
+::-webkit-scrollbar {
+	width:10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background:#333;
+}
+
+::-webkit-scrollbar-thumb {
+	background: $yellowgreen;
+  border-radius: 30px;
+}

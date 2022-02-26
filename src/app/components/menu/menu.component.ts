@@ -24,6 +24,11 @@ export class MenuComponent implements OnInit {
     this.router.navigateByUrl('player/home');
   }
 
+  irParaPlaylist(playlistId: string){
+    this.menuAtivo = playlistId;
+    this.router.navigateByUrl(`player/lista/playlist/${playlistId}`)
+  }
+
   async buscarPlaylists(){
     this.playlists = await this.spotifyService.buscarPlaylistUsuario();
     console.log(this.playlists)

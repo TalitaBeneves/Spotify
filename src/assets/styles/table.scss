@@ -68,6 +68,16 @@
     }
   }
 
+  .center{
+    text-align: center;
+
+    h1,h2{
+      font-weight: 700;
+      color: $yellowgreen;
+      cursor: default;
+    }
+  }
+
   .w{
     @for $i from 1 to 10 {
       $width: $i * 5;

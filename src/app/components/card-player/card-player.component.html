@@ -2,7 +2,13 @@
   <div
     class="image"
     [style.background-image]="'url(' + musica.album.imagemUrl + ')'"
-  ></div>
+  >
+  <div class="teste" *ngIf="!musica.album.imagemUrl.length">
+    <p>nenhuma música tocando <br> no momento</p>
+    <i class="bi bi-vinyl-fill"></i>
+  </div>
+</div>
+
   <div class="controles">
     <span class="nomeMusica">{{ musica.titulo }}</span> <br />
     <span>{{ obterArtistas(musica) }}</span>

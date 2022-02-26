@@ -9,6 +9,20 @@
   flex-direction: column;
   margin-top: 10px;
 
+  .teste{
+    text-transform: uppercase;
+    text-align: center;
+    padding: 150px 45px 0px 0px;
+
+    color: rgb(175, 171, 171);
+    font-size: 15px;
+    font-weight: 700;
+
+    i{
+      font-size: 60px;
+    }
+  }
+
   .image {
     height: 65%;
     width: 310px;

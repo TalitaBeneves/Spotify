@@ -1,6 +1,10 @@
 <div class="minhas-musicas">
   <span class="titulo-bg mt-4"> Seu Top Artista </span>
-
+  <i class="bi bi-lightbulb"></i>
+  <i class="bi bi-lightbulb-fill"></i>
+  <i class="bi bi-toggle-off"></i>
+  <i class="bi bi-toggle-on"></i>
+  
   <app-top-artista class="mt-2 d-block"></app-top-artista>
 
   <span class="titulo-bg mt-4"> Músicas Curtidas </span>
@@ -21,7 +25,6 @@
         *ngFor="let musica of musicas"
         [class.executando]="musica.id == musicaAtual.id"
         (click)="executarMusica(musica)"
-        (click)="onClickPlay()"
       >
         <td>
           <i class="bi bi-play-circle play"></i>
@@ -37,6 +40,14 @@
         <td class="direita">{{ musica.tempo }}</td>
       </tr>
     </tbody>
+    <tfoot *ngIf="!musicas.length">
+      <tr>
+        <td colspan="8" class="center">
+          <h1>Você está Desconectado</h1>
+          <h2>Tente Logar novamente!</h2>
+        </td>
+      </tr>
+    </tfoot>
   </table>
 </div>
 
