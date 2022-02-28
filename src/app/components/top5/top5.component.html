@@ -1,8 +1,15 @@
+<div>
+  <i class="bi bi-lightbulb"></i>
+  <i class="bi bi-lightbulb-fill"></i>
+  <i class="bi bi-toggle-off"></i>
+  <i class="bi bi-toggle-on"></i>
+</div>
 <span class="titulo-md">Seu Top Favorito</span>
 <app-artista-item-img
   *ngFor="let artista of artistas"
   class="mt-1"
   [imagemSrc]="artista.imagemUrl"
+  (click)="irParaPlaylist(artista.id)"
 >
   {{ artista.nome }}
 </app-artista-item-img>
