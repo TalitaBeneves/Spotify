@@ -1,9 +1,8 @@
-import { async } from '@angular/core/testing';
-import { SpotifyService } from './spotify.service';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { newMusica } from '../common/factories';
 import { IMusica } from './../Interfaces/IMusica';
+import { SpotifyService } from './spotify.service';
 
 @Injectable({
   providedIn: 'root',
