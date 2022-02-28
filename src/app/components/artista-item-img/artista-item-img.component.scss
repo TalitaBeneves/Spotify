@@ -2,11 +2,12 @@
 
 .container {
   align-items: center;
-  padding: 5px 0px;
+  padding: 5px 5px;
   cursor: pointer;
 
   &:hover {
     background-color: $preto-transp-9;
+    border-radius: 20px;
   }
 
   img {
@@ -24,6 +25,5 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
   }
 }

@@ -30,15 +30,13 @@
   </div>
 
   <div class="menu-container flex">
-    <span class="playlist-titulo">
-      PLAYLISTS
-    </span>
+    <span class="playlist-titulo"> PLAYLISTS </span>
 
     <div class="playlist-scroll">
       <app-botao-menu
         *ngFor="let playlist of playlists"
         [descricao]="playlist.nome"
-        [selecionado]="menuSelecionado === playlist.id"
+        [selecionado]="menuAtivo === playlist.id"
         (click)="irParaPlaylist(playlist.id)"
       >
         <i class="bi bi-music-note-list"></i>
@@ -47,6 +45,6 @@
   </div>
 </div>
 
-  <div class="usuario-info">
-    <app-rodape-user></app-rodape-user>
-  </div>
+<div class="usuario-info">
+  <app-rodape-user></app-rodape-user>
+</div>

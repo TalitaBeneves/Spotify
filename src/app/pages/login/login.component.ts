@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     const token = this.spotifyService.obterTokenCallback();
     if (!!token) {
       this.spotifyService.definirAcessoToken(token);
-      this.router.navigate(['/player'])
+      this.router.navigate(['/player/home']);
     }
   }
 

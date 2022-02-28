@@ -4,6 +4,8 @@
   height: 250px;
   position: relative;
   overflow: hidden;
+  margin: 5px;
+  margin-bottom: 40px;
   background-color: $preto-transp-9;
 
   .artista {
@@ -15,8 +17,7 @@
   }
 
   .image {
-    background-size: cover;
-    position: absolute;
+
     height: 250px;
     width: 330px;
     background-position: left;

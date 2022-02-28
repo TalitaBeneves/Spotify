@@ -1,7 +1,6 @@
-@import "variaveis.scss";
+@import "variaveis";
 
 :host {
-  background-color: #222;
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -11,22 +10,34 @@
     width: 100%;
     height: 100%;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
 
     img {
       width: 30%;
     }
 
     button {
-      min-width: 200px;
-      padding: 20px;
-      font-size: 1.5rem;
+      padding: 15px;
+      font-size: 1.4rem;
       font-weight: 700;
       border-radius: 30px;
       border: 0;
       color: $cor-fundo-menu;
-      background-color: $yellowgreen;
+      background-color: wheat;
+      transition: all 0.5s ease;
       cursor: pointer;
+    }
+
+    button:hover {
+      background-color: rgb(150, 141, 126);
+    }
+
+    video {
+      position: fixed;
+      min-width: 100%;
+      min-height: 100%;
+      height: auto;
+      z-index: -1000;
     }
   }
 }

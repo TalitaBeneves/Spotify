@@ -1,7 +1,7 @@
 <div class="flex">
-  <img src="https://i.scdn.co/image/ab6775700000ee859bb739b59126a053b0098224" alt="">
+  <img [src]="usuario.imagemUrl" alt="imgUsuario">
   <span>
-   Talita
+   {{usuario.nome}}
   </span>
   <i class="bi bi-box-arrow-right icone" (click)="logout()"></i>
 </div>

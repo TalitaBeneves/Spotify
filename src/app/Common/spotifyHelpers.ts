@@ -3,7 +3,7 @@ import { IArtista } from '../Interfaces/IArtista';
 import { IMusica } from '../Interfaces/IMusica';
 import { IPlaylist } from '../Interfaces/IPlaylist';
 import { IUsuario } from '../Interfaces/IUsuario';
-import { newMusica, newPlaylist } from './factories';
+import { newArtista, newMusica, newPlaylist } from './factories';
 
 export function SpotifyUserParaUsuario( user: SpotifyApi.CurrentUsersProfileResponse ): IUsuario {
   return {
@@ -33,11 +33,25 @@ export function SpotifySinglePlaylistParaPlaylist(playlist: SpotifyApi.SinglePla
   }
 }
 
+export function SpotifyPlaylistArtistaParaPlaylistArtista( playlistArtista: SpotifyApi.SingleArtistResponse ): IPlaylist {
+  if (!playlistArtista)
+    return newPlaylist();
+
+  return {
+    id: playlistArtista.id,
+    imagemUrl: playlistArtista.uri,
+    nome: playlistArtista.name,
+    musicas: []
+  };
+}
+
 export function SpotifyArtistaParaArtista( spotifyArtista: SpotifyApi.ArtistObjectFull ): IArtista {
   return {
     id: spotifyArtista.id,
+    URI: spotifyArtista.uri,
     imagemUrl: spotifyArtista.images.sort((a,b) => a.width - b.width).pop().url,
     nome: spotifyArtista.name,
+    genero: spotifyArtista.genres.pop()
   };
 }
 
@@ -66,3 +80,17 @@ export function SpotifyTrackParaMusica(spotifyTrack: SpotifyApi.TrackObjectFull)
     tempo: msParaMinutos(spotifyTrack.duration_ms),
   }
 }
+
+// export function SpotifyTrackParaArtista(spotifyArtista: SpotifyApi.AlbumObjectSimplified): IArtista{
+
+//   if (!spotifyArtista)
+//     return newArtista();
+
+//   return {
+//     id: spotifyArtista.id,
+//     nome: spotifyArtista.name,
+//     imagemUrl: '',
+//     genero: '',
+//     URI: spotifyArtista.uri
+//   }
+// }

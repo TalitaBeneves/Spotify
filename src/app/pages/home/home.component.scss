@@ -1,11 +1,10 @@
-@import 'variaveis';
-@import 'table';
-
+@import "variaveis";
+@import "table";
 
 :host {
   display: flex;
   justify-content: space-between;
-  background-color:$preto-transp-9;
+  background-color: $preto-transp-9;
 
   ::-webkit-scrollbar {
     width: 7px;
@@ -17,6 +16,11 @@
     &-track {
       background: transparent;
     }
+  }
+
+  .bi-pause-fill{
+    font-size: 40px;
+    color: white;
   }
 
   .minhas-musicas {
@@ -34,6 +38,4 @@
   .painel-direito {
     height: 100vh;
   }
-
-
 }

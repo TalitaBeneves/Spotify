@@ -8,25 +8,30 @@
 
   .artista {
     position: absolute;
-    z-index: 1;
-    padding: 10% 0% 0% 0%;
+    padding: 6% 0% 0% 0%;
     justify-content: start;
     margin-left: 35%;
     max-width: 60%;
   }
 
   .image {
-    background-size: cover;
-    position: absolute;
     height: 250px;
     width: 330px;
-    background-position: left;
     background-size: cover;
+    background-position: left;
     background-repeat: no-repeat;
-    z-index: 1;
   }
 
   span {
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    padding-right: 5px;
     color: $branco;
+
+    &.genero {
+      text-transform: uppercase;
+      color: $branco;
+    }
   }
 }

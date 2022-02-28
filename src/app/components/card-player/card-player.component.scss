@@ -9,7 +9,7 @@
   flex-direction: column;
   margin-top: 10px;
 
-  .teste{
+  .musicOff{
     text-transform: uppercase;
     text-align: center;
     padding: 150px 45px 0px 0px;
@@ -38,13 +38,13 @@
     color: $branco;
 
     .nomeMusica {
-      font-size: 0.9rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: $branco;
     }
 
     span {
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 700;
       color: gray;
     }

@@ -33,10 +33,12 @@ export class AutenticadoGuard implements CanLoad {
       return this.semToken();
     }
 
-    return new Promise((res) => {
-      const usuariCriado = this.spotifyService.iniciarUsuario();
-      if (usuariCriado) res(true);
-      else res(this.semToken());
+    return new Promise(async(res) => {
+      const usuariCriado = await this.spotifyService.iniciarUsuario();
+      if (usuariCriado)
+        res(true);
+      else
+        res(this.semToken());
     });
   }
 

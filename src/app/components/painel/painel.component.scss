@@ -4,13 +4,13 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-
   width: 300px;
-  padding: 20px;
+  padding: 15px;
   background-color: $preto-transp-30;
   box-shadow: 1px 1px 15px $preto-transp-30;
 
   .player {
     flex-grow: 1;
   }
+
 }

@@ -1,9 +1,9 @@
-import { PlayerService } from './../../services/player.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { IMusica } from './../../Interfaces/IMusica';
-import { SpotifyService } from './../../services/spotify.service';
-import { newMusica } from 'src/app/common/factories';
 import { Subscription } from 'rxjs';
+import { newMusica } from 'src/app/common/factories';
+import { IMusica } from './../../Interfaces/IMusica';
+import { PlayerService } from './../../services/player.service';
+import { SpotifyService } from './../../services/spotify.service';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +12,10 @@ import { Subscription } from 'rxjs';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   musicas: IMusica[] = [];
-  play: boolean = false;
   musicaAtual: IMusica = newMusica();
   subs: Subscription[] = [];
-
+  play: boolean = false;
+  // play: string = 'bi bi-pause-circle';
   constructor(
     private spotifyService: SpotifyService,
     private playerService: PlayerService
@@ -38,15 +38,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   obterMusicaAtual() {
     const sub = this.playerService.musicaAtual.subscribe((musica) => {
       this.musicaAtual = musica;
-      console.log(this.musicaAtual)
+      this.play= !this.play;
     });
-
     this.subs.push(sub);
   }
 
   async executarMusica(musica: IMusica) {
     await this.spotifyService.executarMusica(musica.id);
     this.playerService.definirMusicaAtual(musica);
+
   }
 
   ngOnDestroy() {

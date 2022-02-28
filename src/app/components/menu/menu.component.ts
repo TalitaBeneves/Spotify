@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
   menuAtivo = 'Home';
-
   playlists: IPlaylist[] = [];
 
   constructor(private router: Router, private spotifyService: SpotifyService) {}
@@ -27,10 +26,10 @@ export class MenuComponent implements OnInit {
   irParaPlaylist(playlistId: string){
     this.menuAtivo = playlistId;
     this.router.navigateByUrl(`player/lista/playlist/${playlistId}`)
+    console.log(playlistId)
   }
 
   async buscarPlaylists(){
     this.playlists = await this.spotifyService.buscarPlaylistUsuario();
-    console.log(this.playlists)
   }
 }

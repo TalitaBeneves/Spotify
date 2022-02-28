@@ -1,12 +1,26 @@
-<div class="card">
-  <div class="artista flex">
+<div
+  class="card"
+  [ngStyle]="{
+    backgroundColor: color
+  }"
+  >
+
+  <ng-content></ng-content>
+
+  <div class="artista">
     <span class="titulo-bg">
       {{ topArtista.nome }}
+    </span>
+
+    <span class="genero">
+      <span> gênero: </span>
+      <p>
+        {{ topArtista.genero }}
+      </p>
     </span>
   </div>
   <div
     class="image"
     [style.background-image]="'url(' + topArtista.imagemUrl + ')'"
-  >
-</div>
+  ></div>
 </div>

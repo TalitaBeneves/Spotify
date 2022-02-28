@@ -1,4 +1,4 @@
-@import 'variaveis';
+@import "variaveis";
 
 :host {
   display: block;
@@ -12,6 +12,8 @@
     text-align: left;
     font-weight: 700;
     font-size: 1rem;
+    color: $yellowgreen;
+    background-color: transparent;
     cursor: pointer;
 
     span {
@@ -24,14 +26,9 @@
       text-overflow: ellipsis;
     }
 
-    color: $yellowgreen;
-    background-color: transparent;
-
     &.selecionado {
       background-color: $yellowgreen;
       color: $branco;
     }
-
   }
-
-  }
+}

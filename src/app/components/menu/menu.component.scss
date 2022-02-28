@@ -8,64 +8,63 @@
   flex-direction: column;
   background-color: $preto-transp-30;
 
-
-
   .menu {
-    flex: 1;
+    flex-grow: 1;
     flex-direction: column;
     height: 100%;
     padding: 0px 40px 0px 40px;
-  }
 
-  .image-container {
-    min-height: $h-spotify-logo;
-    color: $branco;
-    font-size: 20px;
-
-    img {
-      width: 80%;
-    }
-  }
-
-  .menu-container {
-    width: 100%;
-
-    &.flex {
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-    }
-
-    &.opcoes {
-      min-height: $h-menu-opcoes;
-
-      i {
-        font-size: 20px;
-      }
-      * {
-        margin-bottom: $m-entre-menu;
-      }
-    }
-
-    .playlist-titulo {
-      margin: 20px 110px 20px 0px;
-      align-items: flex-start;
-      font-weight: 700;
-      font-size: .8rem;
+    .image-container {
+      min-height: $h-spotify-logo;
       color: $branco;
+      font-size: 20px;
+
+      img {
+        width: 80%;
+      }
     }
 
-    .playlist-scroll {
+    .menu-container {
       width: 100%;
-      max-height: calc(95vh $h-desconsiderar);
-      overflow-y: auto;
 
-      &::-webkit-scrollbar{
-        display: none;
+      &.flex {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
       }
 
-      * {
-        margin-bottom: $m-entre-menu;
+      &.opcoes {
+        min-height: $h-menu-opcoes;
+
+        i {
+          font-size: 20px;
+        }
+
+        * {
+          margin-bottom: $m-entre-menu;
+        }
+      }
+
+      .playlist-titulo {
+        margin: 20px 0px;
+        align-self: flex-start;
+        font-weight: 700;
+        font-size: 0.8rem;
+        color: $branco;
+      }
+      ////////SCROLAR
+      .playlist-scroll {
+        width: 100%;
+        max-height: 58vh;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        * {
+          margin-bottom: $m-entre-menu;
+        }
       }
     }
   }
@@ -75,7 +74,7 @@
     display: block;
     bottom: 0;
     align-self: flex-end;
-    height: $h-desconsiderar;
+    height: $h-footer-user;
     width: 100%;
   }
 }

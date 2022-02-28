@@ -1,3 +1,4 @@
+import { SpotifyService } from 'src/app/services/spotify.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { newMusica } from 'src/app/common/factories';
@@ -67,4 +68,5 @@ export class CardPlayerComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subs.forEach((sub) => sub.unsubscribe());
   }
+  
 }

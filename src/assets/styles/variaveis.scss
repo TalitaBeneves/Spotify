@@ -8,24 +8,22 @@ $preto-transp-9: #1e1e4e9f;
 $yellowgreen: yellowgreen;
 $branco: #fff;
 
-
 $h-spotify-logo: 120px;
 $h-menu-opcoes: 150px;
 $h-footer-user: 70px;
-$h-desconsiderar: calc($h-spotify-logo + $h-menu-opcoes + $h-footer-user);
 
 $m-entre-menu: 10px;
 
 ::-webkit-scrollbar {
-	width:10px;
-	height: 10px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-	background:#333;
+  background: #333;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: $yellowgreen;
+  background: $yellowgreen;
   border-radius: 30px;
 }

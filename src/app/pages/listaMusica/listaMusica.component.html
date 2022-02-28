@@ -1,8 +1,10 @@
-<div class="lista mt-4">
+<div class="lista mt-4 playlist-scroll">
   <app-banner [ImagemUrl]="bannerImagemUrl" [texto]="bannerTexto"></app-banner>
 
-
-  <table class="table mt-3">
+  <div class="titulo-bg mt-7">
+    {{ titulo }}
+  </div>
+  <table class="table mt-4">
     <thead>
       <tr>
         <th class="w-5">#</th>
@@ -36,13 +38,13 @@
     <tfoot *ngIf="!musicas.length">
       <tr>
         <td colspan="8" class="center">
-          <h1>Você está Desconectado</h1>
-          <h2>Tente Logar novamente!</h2>
+          <h1>Nenhuma Playlist encontrada</h1>
         </td>
       </tr>
     </tfoot>
   </table>
 </div>
+
 <app-painel class="painel-direito">
 
 </app-painel>
