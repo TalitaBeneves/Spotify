@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
   background-color:$preto-transp-9;
-  
+
   ::-webkit-scrollbar {
     width: 7px;
 
@@ -29,4 +29,27 @@
     max-height: 100%;
     overflow-y: scroll;
   }
+
+  .d-block {
+    display: block;
+  }
+
+  .playlist-scroll {
+    width: 100%;
+    max-height: 96vh;
+    overflow-y: auto;
+
+    ::-webkit-scrollbar {
+      width: 7px;
+
+      &-thumb {
+        border-radius: 10px;
+      }
+
+      &-track {
+        background: transparent;
+      }
+    }
+  }
+
 }

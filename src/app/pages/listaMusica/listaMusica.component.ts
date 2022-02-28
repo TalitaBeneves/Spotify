@@ -21,7 +21,7 @@ export class ListaMusicaComponent implements OnInit, OnDestroy {
   musicaAtual: IMusica = newMusica();
 
   constructor(
-    private activeRoute: ActivatedRoute,
+    private activedRoute: ActivatedRoute,
     private spotifyService: SpotifyService,
     private playerService: PlayerService
   ) {}
@@ -31,8 +31,8 @@ export class ListaMusicaComponent implements OnInit, OnDestroy {
     this.obterMusicaAtual();
   }
 
-  obterMusicaAtual(){
-    const sub = this.playerService.musicaAtual.subscribe(musica => {
+  obterMusicaAtual() {
+    const sub = this.playerService.musicaAtual.subscribe((musica) => {
       this.musicaAtual = musica;
     });
 
@@ -40,7 +40,7 @@ export class ListaMusicaComponent implements OnInit, OnDestroy {
   }
 
   obterMusicas() {
-    const sub = this.activeRoute.paramMap.subscribe(async (params) => {
+    const sub = this.activedRoute.paramMap.subscribe(async (params) => {
       const tipo = params.get('tipo');
       const id = params.get('id');
       await this.obterDadosPagina(tipo, id);
@@ -50,8 +50,11 @@ export class ListaMusicaComponent implements OnInit, OnDestroy {
   }
 
   async obterDadosPagina(tipo: string, id: string) {
-    if (tipo === 'playlist') await this.obterDadosPlaylist(id);
-    else await this.obterDadosArtitas(id);
+    if (tipo === 'playlist')
+      await this.obterDadosPlaylist(id);
+    else
+    return null
+      // await this.obterDadosArtitas(id);
   }
 
   async obterDadosPlaylist(playlistId: string) {
@@ -64,10 +67,22 @@ export class ListaMusicaComponent implements OnInit, OnDestroy {
       playlistMusicas.imagemUrl,
       playlistMusicas.musicas
     );
-    this.titulo = '' + playlistMusicas.nome;
+    this.titulo = 'Sua Playlist: ' + playlistMusicas.nome;
   }
 
-  async obterDadosArtitas(playlistId: string) {}
+  async obterDadosArtitas(artistaId: string) {
+    const playlistArtista =
+      await this.spotifyService.buscarMusicasPlaylistArtista(artistaId);
+      this.definirDadosPagina(
+        playlistArtista.nome,
+        playlistArtista.imagemUrl,
+        playlistArtista.musicas
+        );
+        console.log("aaaaaaaaaa",playlistArtista)
+    this.titulo = 'Sua Playlist: ' + playlistArtista.nome;
+
+    // this.titulo = '' + playlistArtista.nome;
+  }
 
   definirDadosPagina(
     bannerTexto: string,
