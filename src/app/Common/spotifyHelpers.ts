@@ -33,16 +33,18 @@ export function SpotifySinglePlaylistParaPlaylist(playlist: SpotifyApi.SinglePla
   }
 }
 
-export function SpotifyPlaylistArtistaParaPlaylistArtista( playlistArtista: SpotifyApi.SingleArtistResponse ): IPlaylist {
+export function SpotifyPlaylistArtistaParaPlaylistArtista( playlistArtista: SpotifyApi.SingleArtistResponse ): IArtista {
   if (!playlistArtista)
-    return newPlaylist();
+    return newArtista();
 
   return {
     id: playlistArtista.id,
-    imagemUrl: playlistArtista.uri,
+    URI: playlistArtista.uri,
+    imagemUrl: playlistArtista.images.sort((a,b) => a.width - b.width).pop().url,
     nome: playlistArtista.name,
-    musicas: []
+    genero: playlistArtista.genres.pop()
   };
+  
 }
 
 export function SpotifyArtistaParaArtista( spotifyArtista: SpotifyApi.ArtistObjectFull ): IArtista {

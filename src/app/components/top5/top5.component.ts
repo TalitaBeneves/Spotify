@@ -24,7 +24,10 @@ export class Top5Component implements OnInit {
   }
 
   irParaPlaylist(artistaId: string){
-    this.router.navigateByUrl(`player/lista/artista/${artistaId}`)
+    // this.menuAtivo = artistaId;
+    this.router.navigateByUrl(`player/lista/playlist/${artistaId}`)
+    console.log(artistaId)
   }
+
 
 }

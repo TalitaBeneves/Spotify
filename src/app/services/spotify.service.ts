@@ -131,7 +131,7 @@ export class SpotifyService {
 
     const playlist = SpotifyPlaylistArtistaParaPlaylistArtista(playlistSpotify);
     const musicasSpotify = await this.spotifyAPI.getArtistAlbums(artistaId, { offset, limit });
-    playlist.musicas =  musicasSpotify.items.map(musica => SpotifyTrackParaMusica(musica.uri as unknown as SpotifyApi.TrackObjectFull));
+    // playlist.musicas =  musicasSpotify.items.map(SpotifyArtistaParaArtista);
     console.log("ARTISTA", musicasSpotify)
 
     return playlist;

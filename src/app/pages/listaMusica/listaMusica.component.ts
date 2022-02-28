@@ -53,15 +53,14 @@ export class ListaMusicaComponent implements OnInit, OnDestroy {
     if (tipo === 'playlist')
       await this.obterDadosPlaylist(id);
     else
-    return null
-      // await this.obterDadosArtitas(id);
+     await this.obterDadosArtitas(id);
   }
 
   async obterDadosPlaylist(playlistId: string) {
     const playlistMusicas = await this.spotifyService.buscarMusicasPlaylist(
       playlistId
     );
-    // console.log(playlistMusicas)
+    console.log("aaaaaaaaaaa",playlistMusicas)
     this.definirDadosPagina(
       playlistMusicas.nome,
       playlistMusicas.imagemUrl,
@@ -71,17 +70,14 @@ export class ListaMusicaComponent implements OnInit, OnDestroy {
   }
 
   async obterDadosArtitas(artistaId: string) {
-    const playlistArtista =
-      await this.spotifyService.buscarMusicasPlaylistArtista(artistaId);
+    const playlistArtista = await this.spotifyService.buscarMusicasPlaylistArtista(artistaId);
       this.definirDadosPagina(
         playlistArtista.nome,
         playlistArtista.imagemUrl,
         playlistArtista.musicas
         );
-        console.log("aaaaaaaaaa",playlistArtista)
-    this.titulo = 'Sua Playlist: ' + playlistArtista.nome;
 
-    // this.titulo = '' + playlistArtista.nome;
+    this.titulo = 'Sua Playlist: ' + playlistArtista.nome;
   }
 
   definirDadosPagina(
