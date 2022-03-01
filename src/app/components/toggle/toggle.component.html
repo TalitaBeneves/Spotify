@@ -1,0 +1,11 @@
+<h2>Troque de Modo
+<i
+  class="lightbulb"
+  [ngClass]="{
+    'bi bi-lightbulb': !trocaIcon,
+    'bi bi-lightbulb-off-fill': trocaIcon
+  }"
+  [(ngModel)]="isDark"
+  (click)="toogleDark()"
+></i>
+</h2>

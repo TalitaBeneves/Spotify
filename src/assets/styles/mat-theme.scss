@@ -1,0 +1,74 @@
+@import "~@angular/material/theming";
+@import "variaveis";
+@import "~@angular/material/theming";
+@include mat-core();
+$spotify-primary: mat-palette($mat-indigo);
+$spotify-accent: mat-palette($mat-pink, A200, A100, A400);
+$spotify-warn: mat-palette($mat-red);
+$spotify-theme: mat-light-theme(
+  (
+    color: (
+      primary: $spotify-primary,
+      accent: $spotify-accent,
+      warn: $spotify-warn,
+    ),
+  )
+);
+@include angular-material-theme($spotify-theme);
+
+$mat-primary-scheme: (
+  100: $yellowgreen,
+  500: #61699a,
+  700: #303f9f,
+  contrast: (
+    100: rgba(0, 0, 0, 0.87),
+    500: $yellowgreen,
+    700: $yellowgreen,
+  ),
+);
+$mat-accent-scheme: (
+  100: #ff80ab,
+  500: #ff4081,
+  700: #f50057,
+  contrast: (
+    100: rgba(0, 0, 0, 0.87),
+    500: rgba(0, 0, 0, 0.87),
+    700: $yellowgreen,
+  ),
+);
+$mat-primary-palette: mat-palette($mat-primary-scheme);
+$mat-accent-palette: mat-palette($mat-accent-scheme);
+
+$app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
+
+.light-mode {
+  @include angular-material-theme($app-light-theme);
+}
+
+$app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
+
+.dark-mode {
+  @include angular-material-theme($app-dark-theme);
+
+  background-color: #ff4080d8;
+  div,
+  span,
+  p,
+  h1,
+  h2,
+  h3
+  {
+    color: $branco !important;
+  }
+
+  table,
+  thead,
+  tbody,
+  tfoot,
+  td,
+  th,
+  tr:hover {
+
+    color: rgb(204, 185, 185) !important;
+  }
+}
