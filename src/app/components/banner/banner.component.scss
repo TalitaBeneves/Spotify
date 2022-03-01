@@ -11,13 +11,12 @@
   .artista {
     position: absolute;
     z-index: 1;
-    padding: 10% 1% 0% 0%;
+    padding: 6% 1%;
     justify-content: start;
     margin-left: 30%;
   }
 
   .image {
-
     height: 250px;
     width: 330px;
     background-position: left;
@@ -28,5 +27,6 @@
 
   span {
     color: $yellowgreen;
+    line-height: 50px;
   }
 }

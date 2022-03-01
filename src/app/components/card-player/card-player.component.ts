@@ -68,5 +68,5 @@ export class CardPlayerComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subs.forEach((sub) => sub.unsubscribe());
   }
-  
+
 }

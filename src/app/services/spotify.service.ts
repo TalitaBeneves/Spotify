@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import Spotify from 'spotify-web-api-js';
 import { SpotifyConfig } from 'src/environments/environment';
 import {
-  SpotifyArtistaParaArtista, SpotifyPlaylistArtistaParaPlaylistArtista, SpotifyPlaylistParaPlaylist,
+  SpotifyArtistaParaArtista, SpotifyPlaylistParaPlaylist,
   SpotifySinglePlaylistParaPlaylist, SpotifyTrackParaMusica, SpotifyUserParaUsuario
 } from '../common/spotifyHelpers';
 import { IPlaylist } from '../Interfaces/IPlaylist';
@@ -116,36 +116,11 @@ export class SpotifyService {
     return null;
 
     const playlist = SpotifySinglePlaylistParaPlaylist(playlistSpotify);
-
     const musicasSpotify = await this.spotifyAPI.getPlaylistTracks(playlistId, { offset, limit });
     playlist.musicas =  musicasSpotify.items.map(musica => SpotifyTrackParaMusica(musica.track as SpotifyApi.TrackObjectFull));
 
     return playlist;
   }
-
-  async buscarMusicasPlaylistArtista(artistaId: string, offset = 0, limit = 50) {
-    const playlistSpotify = await this.spotifyAPI.getArtist(artistaId);
-
-    if (!playlistSpotify)
-    return null;
-
-    const playlist = SpotifyPlaylistArtistaParaPlaylistArtista(playlistSpotify);
-    const musicasSpotify = await this.spotifyAPI.getArtistAlbums(artistaId, { offset, limit });
-    // playlist.musicas =  musicasSpotify.items.map(SpotifyArtistaParaArtista);
-    console.log("ARTISTA", musicasSpotify)
-
-    return playlist;
-  }
-
-
-
-
-
-
-
-  // async BG() {
-  //   await this.spotifyAPI.setVolume();
-  // }
 
   logout() {
     localStorage.clear();

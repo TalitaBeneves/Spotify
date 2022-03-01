@@ -8,7 +8,6 @@ export function newArtista(): IArtista {
     imagemUrl: '',
     nome: '',
     genero: '',
-    URI: '',
     musicas: []
   };
 }

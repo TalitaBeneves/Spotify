@@ -33,24 +33,9 @@ export function SpotifySinglePlaylistParaPlaylist(playlist: SpotifyApi.SinglePla
   }
 }
 
-export function SpotifyPlaylistArtistaParaPlaylistArtista( playlistArtista: SpotifyApi.SingleArtistResponse ): IArtista {
-  if (!playlistArtista)
-    return newArtista();
-
-  return {
-    id: playlistArtista.id,
-    URI: playlistArtista.uri,
-    imagemUrl: playlistArtista.images.sort((a,b) => a.width - b.width).pop().url,
-    nome: playlistArtista.name,
-    genero: playlistArtista.genres.pop()
-  };
-  
-}
-
 export function SpotifyArtistaParaArtista( spotifyArtista: SpotifyApi.ArtistObjectFull ): IArtista {
   return {
     id: spotifyArtista.id,
-    URI: spotifyArtista.uri,
     imagemUrl: spotifyArtista.images.sort((a,b) => a.width - b.width).pop().url,
     nome: spotifyArtista.name,
     genero: spotifyArtista.genres.pop()
@@ -82,17 +67,3 @@ export function SpotifyTrackParaMusica(spotifyTrack: SpotifyApi.TrackObjectFull)
     tempo: msParaMinutos(spotifyTrack.duration_ms),
   }
 }
-
-// export function SpotifyTrackParaArtista(spotifyArtista: SpotifyApi.AlbumObjectSimplified): IArtista{
-
-//   if (!spotifyArtista)
-//     return newArtista();
-
-//   return {
-//     id: spotifyArtista.id,
-//     nome: spotifyArtista.name,
-//     imagemUrl: '',
-//     genero: '',
-//     URI: spotifyArtista.uri
-//   }
-// }

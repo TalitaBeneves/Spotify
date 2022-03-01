@@ -3,14 +3,17 @@
     class="image"
     [style.background-image]="'url(' + musica.album.imagemUrl + ')'"
   >
-  <div class="musicOff" *ngIf="!musica.album.imagemUrl.length">
-    <p>nenhuma música tocando <br> no momento</p>
-    <i class="bi bi-vinyl-fill"></i>
+    <div class="musicOff" *ngIf="!musica.album.imagemUrl.length">
+      <p>
+        nenhuma música tocando <br />
+        no momento
+      </p>
+      <i class="bi bi-vinyl-fill"></i>
+    </div>
   </div>
-</div>
 
   <div class="controles">
-    <span class="nomeMusica">{{ musica.titulo }}</span> <br /><br />
+    <span class="nomeMusica">{{ musica.titulo }}</span>
     <span>{{ obterArtistas(musica) }}</span>
 
     <div class="botoes">

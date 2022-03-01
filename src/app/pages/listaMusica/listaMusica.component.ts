@@ -53,7 +53,8 @@ export class ListaMusicaComponent implements OnInit, OnDestroy {
     if (tipo === 'playlist')
       await this.obterDadosPlaylist(id);
     else
-     await this.obterDadosArtitas(id);
+    return null
+    //  await this.obterDadosArtitas(id);
   }
 
   async obterDadosPlaylist(playlistId: string) {
@@ -67,17 +68,6 @@ export class ListaMusicaComponent implements OnInit, OnDestroy {
       playlistMusicas.musicas
     );
     this.titulo = 'Sua Playlist: ' + playlistMusicas.nome;
-  }
-
-  async obterDadosArtitas(artistaId: string) {
-    const playlistArtista = await this.spotifyService.buscarMusicasPlaylistArtista(artistaId);
-      this.definirDadosPagina(
-        playlistArtista.nome,
-        playlistArtista.imagemUrl,
-        playlistArtista.musicas
-        );
-
-    this.titulo = 'Sua Playlist: ' + playlistArtista.nome;
   }
 
   definirDadosPagina(
