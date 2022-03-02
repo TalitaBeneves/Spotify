@@ -1,5 +1,5 @@
 # Spotify
-
+### Nos *environments* coloque a sua key do spotify! lembrando que precisa ser *premium* para usar os controles de música.
 
 https://user-images.githubusercontent.com/83943087/156269501-da16ce89-5d59-48aa-9fe8-7df45529d4e3.mp4
 
@@ -9,5 +9,5 @@ https://user-images.githubusercontent.com/83943087/156269501-da16ce89-5d59-48aa-
 ### Para rodar o projeto faça o passo a passo 👇🏾
 ### npm i
 ### ng s
-
+### Nos *environments* coloque a sua key do spotify! lembrando que precisa ser premium para usar os controles de música.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.4.
