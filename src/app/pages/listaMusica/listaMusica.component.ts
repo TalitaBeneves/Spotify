@@ -67,7 +67,6 @@ export class ListaMusicaComponent implements OnInit, OnDestroy {
       playlistMusicas.imagemUrl,
       playlistMusicas.musicas
     );
-    this.titulo = 'Sua Playlist: ' + playlistMusicas.nome;
   }
 
   definirDadosPagina(
