@@ -8,7 +8,7 @@ export function newArtista(): IArtista {
     imagemUrl: '',
     nome: '',
     genero: '',
-    musicas: []
+    musicas: [],
   };
 }
 
@@ -22,8 +22,8 @@ export function newMusica(): IMusica {
     },
     artistas: [],
     tempo: '',
-    titulo: ''
-  }
+    titulo: '',
+  };
 }
 
 export function newPlaylist(): IPlaylist {
@@ -31,6 +31,6 @@ export function newPlaylist(): IPlaylist {
     id: '',
     imagemUrl: '',
     nome: '',
-    musicas: []
-  }
+    musicas: [],
+  };
 }

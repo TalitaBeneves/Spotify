@@ -5,52 +5,60 @@ import { IPlaylist } from '../Interfaces/IPlaylist';
 import { IUsuario } from '../Interfaces/IUsuario';
 import { newArtista, newMusica, newPlaylist } from './factories';
 
-export function SpotifyUserParaUsuario( user: SpotifyApi.CurrentUsersProfileResponse ): IUsuario {
+export function SpotifyUserParaUsuario(
+  user: SpotifyApi.CurrentUsersProfileResponse
+): IUsuario {
   return {
     id: user.id,
     nome: user.display_name,
-    imagemUrl: user.images.pop().url
+    imagemUrl: user.images.pop().url,
   };
 }
 
-export function SpotifyPlaylistParaPlaylist( playlist: SpotifyApi.PlaylistObjectSimplified ): IPlaylist {
+export function SpotifyPlaylistParaPlaylist(
+  playlist: SpotifyApi.PlaylistObjectSimplified
+): IPlaylist {
   return {
     id: playlist.id,
     nome: playlist.name,
-    imagemUrl: ''
+    imagemUrl: '',
   };
 }
 
-export function SpotifySinglePlaylistParaPlaylist(playlist: SpotifyApi.SinglePlaylistResponse ): IPlaylist {
-  if (!playlist)
-    return newPlaylist();
+export function SpotifySinglePlaylistParaPlaylist(
+  playlist: SpotifyApi.SinglePlaylistResponse
+): IPlaylist {
+  if (!playlist) return newPlaylist();
 
   return {
     id: playlist.id,
     nome: playlist.name,
     imagemUrl: playlist.images.shift().url,
-    musicas: []
-  }
-}
-
-export function SpotifyArtistaParaArtista( spotifyArtista: SpotifyApi.ArtistObjectFull ): IArtista {
-  return {
-    id: spotifyArtista.id,
-    imagemUrl: spotifyArtista.images.sort((a,b) => a.width - b.width).pop().url,
-    nome: spotifyArtista.name,
-    genero: spotifyArtista.genres.pop()
+    musicas: [],
   };
 }
 
-export function SpotifyTrackParaMusica(spotifyTrack: SpotifyApi.TrackObjectFull): IMusica{
+export function SpotifyArtistaParaArtista(
+  spotifyArtista: SpotifyApi.ArtistObjectFull
+): IArtista {
+  return {
+    id: spotifyArtista.id,
+    imagemUrl: spotifyArtista.images.sort((a, b) => a.width - b.width).pop()
+      .url,
+    nome: spotifyArtista.name,
+    genero: spotifyArtista.genres.pop(),
+  };
+}
 
-  if (!spotifyTrack)
-    return newMusica();
+export function SpotifyTrackParaMusica(
+  spotifyTrack: SpotifyApi.TrackObjectFull
+): IMusica {
+  if (!spotifyTrack) return newMusica();
 
   const msParaMinutos = (ms: number) => {
     const data = addMilliseconds(new Date(0), ms);
     return format(data, 'mm:ss');
-  }
+  };
 
   return {
     id: spotifyTrack.uri,
@@ -58,12 +66,37 @@ export function SpotifyTrackParaMusica(spotifyTrack: SpotifyApi.TrackObjectFull)
     album: {
       id: spotifyTrack.id,
       imagemUrl: spotifyTrack.album.images.shift().url,
-      nome: spotifyTrack.album.name
+      nome: spotifyTrack.album.name,
     },
-    artistas: spotifyTrack.artists.map(artista => ({
+    artistas: spotifyTrack.artists.map((artista) => ({
       id: artista.id,
-      nome: artista.name
+      nome: artista.name,
     })),
     tempo: msParaMinutos(spotifyTrack.duration_ms),
-  }
+  };
+}
+
+export function SpotifyTrackParaMusicaArtista(
+  spotifyTrackArtista: SpotifyApi.TrackObjectSimplified
+): IMusica {
+  if (!spotifyTrackArtista) return newMusica();
+
+  const msParaMinutos = (ms: number) => {
+    const data = addMilliseconds(new Date(0), ms);
+    return format(data, 'mm:ss');
+  };
+
+  return {
+    id: spotifyTrackArtista.uri,
+    titulo: spotifyTrackArtista.name,
+    album: {
+      id: spotifyTrackArtista.id,
+      nome: spotifyTrackArtista.name,
+    },
+    artistas: spotifyTrackArtista.artists.map((artista) => ({
+      id: artista.id,
+      nome: artista.name,
+    })),
+    tempo: msParaMinutos(spotifyTrackArtista.duration_ms),
+  };
 }

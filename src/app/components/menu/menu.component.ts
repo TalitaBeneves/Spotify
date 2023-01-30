@@ -26,7 +26,6 @@ export class MenuComponent implements OnInit {
   irParaPlaylist(playlistId: string){
     this.menuAtivo = playlistId;
     this.router.navigateByUrl(`player/lista/playlist/${playlistId}`)
-    console.log(playlistId)
   }
 
   async buscarPlaylists(){

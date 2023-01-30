@@ -7,7 +7,7 @@ export const environment = {
 };
 
 export const SpotifyConfig = {
-  clientId: '3e80492dafb24b7ea4efa193056c6c6b',
+  clientId: 'f3a99edab43a42c385edf2b1fab9b0cc',
   authEndpoint: 'https://accounts.spotify.com/authorize',
   redirectUrl: 'http://localhost:4200/login/',
   scopes: [

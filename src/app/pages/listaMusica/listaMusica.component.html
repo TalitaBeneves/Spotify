@@ -25,7 +25,7 @@
           <i class="bi bi-play-circle play"></i>
         </td>
         <td>
-          <img [src]="musica.album.imagemUrl" />
+          <img *ngIf="musica.album.imagemUrl" [src]="musica.album.imagemUrl" />
         </td>
         <td>
           {{ musica.titulo }}
@@ -45,6 +45,4 @@
   </table>
 </div>
 
-<app-painel class="painel-direito">
-
-</app-painel>
+<app-painel class="painel-direito"> </app-painel>

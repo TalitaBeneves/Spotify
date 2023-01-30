@@ -50,23 +50,31 @@ export class ListaMusicaComponent implements OnInit, OnDestroy {
   }
 
   async obterDadosPagina(tipo: string, id: string) {
-    if (tipo === 'playlist')
-      await this.obterDadosPlaylist(id);
-    else
-    return null
-    //  await this.obterDadosArtitas(id);
+    if (tipo === 'playlist') await this.obterDadosPlaylist(id);
+    // return null
+    if (tipo === 'artista') {
+      await this.obterDadosArtita(id);
+    }
   }
 
   async obterDadosPlaylist(playlistId: string) {
     const playlistMusicas = await this.spotifyService.buscarMusicasPlaylist(
       playlistId
     );
-    console.log("aaaaaaaaaaa",playlistMusicas)
     this.definirDadosPagina(
       playlistMusicas.nome,
       playlistMusicas.imagemUrl,
       playlistMusicas.musicas
     );
+    console.log('PlaylistNormal', playlistMusicas);
+  }
+
+  async obterDadosArtita(playlistId: string) {
+    const playlistMusicas = await this.spotifyService.buscarTopArtista(
+      playlistId
+    );
+
+    this.musicas = playlistMusicas;
   }
 
   definirDadosPagina(

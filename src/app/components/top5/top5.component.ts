@@ -6,28 +6,32 @@ import { IArtista } from './../../Interfaces/IArtista';
 @Component({
   selector: 'app-top5',
   templateUrl: './top5.component.html',
-  styleUrls: ['./top5.component.scss']
+  styleUrls: ['./top5.component.scss'],
 })
 export class Top5Component implements OnInit {
+  artistas: IArtista[] = [];
+  artista: any;
 
-  artistas: IArtista[] = []
-
-  constructor(private spotifyService: SpotifyService, private router: Router) { }
+  constructor(private spotifyService: SpotifyService, private router: Router) {}
 
   ngOnInit(): void {
     this.buscarTopArtistas();
   }
 
-  async buscarTopArtistas(){
+  async buscarTopArtistas() {
     this.artistas = await this.spotifyService.buscarTopArtistas();
-    console.log(this.artistas)
   }
 
-  irParaPlaylist(artistaId: string){
-    // this.menuAtivo = artistaId;
-    this.router.navigateByUrl(`player/lista/playlist/${artistaId}`)
-    console.log(artistaId)
+  // async irParaPlaylist(artistaId: string) {
+  //   // this.menuAtivo = artistaId;
+  //   this.artista = await this.spotifyService.buscarTopArtista();
+  //   this.router.navigateByUrl(`player/lista/playlist/${this.artista.id}`);
+  //   console.log(this.artista);
+  // }
+
+  async irParaPlaylist(playlistId: string) {
+    this.artista = await this.spotifyService.buscarTopArtista(playlistId);
+    // this.menuAtivo = this.artista;
+    this.router.navigateByUrl(`player/lista/artista/${playlistId}`);
   }
-
-
 }

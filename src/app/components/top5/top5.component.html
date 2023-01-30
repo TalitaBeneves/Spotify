@@ -4,8 +4,8 @@
 <app-artista-item-img
   *ngFor="let artista of artistas"
   class="mt-1"
-  [imagemSrc]="artista.imagemUrl"
-  (click)="irParaPlaylist(artista.id)"
+  [imagemSrc]="artista?.imagemUrl"
+  (click)="irParaPlaylist(artista?.id)"
 >
   {{ artista.nome }}
 </app-artista-item-img>
