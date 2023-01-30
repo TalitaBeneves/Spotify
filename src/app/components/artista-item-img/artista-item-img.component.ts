@@ -14,7 +14,6 @@ export class ArtistaItemImgComponent implements OnInit {
   ngOnInit(): void {}
 
   onClick() {
-    alert('CLICOU');
     this.click.emit();
   }
 }

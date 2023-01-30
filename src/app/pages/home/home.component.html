@@ -47,4 +47,8 @@
   </table>
 </div>
 
-<app-painel class="painel-direito"></app-painel>
+<app-painel
+  (bannerImagemUrl)="pegandoImg($event)"
+  (nomeArtista)="pegandoNome($event)"
+  class="painel-direito"
+></app-painel>

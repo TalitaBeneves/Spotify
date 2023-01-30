@@ -51,10 +51,7 @@ export class ListaMusicaComponent implements OnInit, OnDestroy {
 
   async obterDadosPagina(tipo: string, id: string) {
     if (tipo === 'playlist') await this.obterDadosPlaylist(id);
-    // return null
-    if (tipo === 'artista') {
-      await this.obterDadosArtita(id);
-    }
+    if (tipo === 'artista') await this.obterDadosArtita(id);
   }
 
   async obterDadosPlaylist(playlistId: string) {
@@ -66,7 +63,6 @@ export class ListaMusicaComponent implements OnInit, OnDestroy {
       playlistMusicas.imagemUrl,
       playlistMusicas.musicas
     );
-    console.log('PlaylistNormal', playlistMusicas);
   }
 
   async obterDadosArtita(playlistId: string) {
@@ -94,6 +90,14 @@ export class ListaMusicaComponent implements OnInit, OnDestroy {
 
   obterArtistas(musica: IMusica) {
     return musica.artistas.map((artista) => artista.nome).join(', ');
+  }
+
+  pegandoImg(e) {
+    this.bannerImagemUrl = e;
+  }
+
+  pegandoNome(e) {
+    this.bannerTexto = e;
   }
 
   ngOnDestroy(): void {

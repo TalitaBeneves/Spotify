@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { SpotifyService } from 'src/app/services/spotify.service';
 import { IArtista } from './../../Interfaces/IArtista';
@@ -9,6 +9,8 @@ import { IArtista } from './../../Interfaces/IArtista';
   styleUrls: ['./top5.component.scss'],
 })
 export class Top5Component implements OnInit {
+  @Output() imagemArtista = new EventEmitter();
+  @Output() nomeArtista = new EventEmitter();
   artistas: IArtista[] = [];
   artista: any;
 
@@ -22,16 +24,11 @@ export class Top5Component implements OnInit {
     this.artistas = await this.spotifyService.buscarTopArtistas();
   }
 
-  // async irParaPlaylist(artistaId: string) {
-  //   // this.menuAtivo = artistaId;
-  //   this.artista = await this.spotifyService.buscarTopArtista();
-  //   this.router.navigateByUrl(`player/lista/playlist/${this.artista.id}`);
-  //   console.log(this.artista);
-  // }
-
-  async irParaPlaylist(playlistId: string) {
+  async irParaPlaylist(playlistId: string, img: string, nome: string) {
     this.artista = await this.spotifyService.buscarTopArtista(playlistId);
-    // this.menuAtivo = this.artista;
     this.router.navigateByUrl(`player/lista/artista/${playlistId}`);
+
+    this.imagemArtista.emit(img);
+    this.nomeArtista.emit(nome);
   }
 }

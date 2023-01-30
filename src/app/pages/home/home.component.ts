@@ -15,7 +15,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   musicaAtual: IMusica = newMusica();
   subs: Subscription[] = [];
   play: boolean = false;
-  // play: string = 'bi bi-pause-circle';
+
+  bannerImagemUrl = '';
+  bannerTexto = '';
+
   constructor(
     private spotifyService: SpotifyService,
     private playerService: PlayerService
@@ -28,7 +31,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   async obterMusicas() {
     this.musicas = await this.spotifyService.buscarMusicas();
-
   }
 
   obterArtistas(musica: IMusica) {
@@ -38,7 +40,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   obterMusicaAtual() {
     const sub = this.playerService.musicaAtual.subscribe((musica) => {
       this.musicaAtual = musica;
-      this.play= !this.play;
+      this.play = !this.play;
     });
     this.subs.push(sub);
   }
@@ -46,7 +48,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   async executarMusica(musica: IMusica) {
     await this.spotifyService.executarMusica(musica.id);
     this.playerService.definirMusicaAtual(musica);
+  }
 
+  pegandoImg(e) {
+    this.bannerImagemUrl = e;
+  }
+
+  pegandoNome(e) {
+    this.bannerTexto = e;
   }
 
   ngOnDestroy() {

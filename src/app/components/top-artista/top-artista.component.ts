@@ -12,12 +12,10 @@ import { Data } from '@angular/router';
 export class TopArtistasComponent implements OnInit {
   topArtista: IArtista = newArtista();
 
-
   letters = '0123456789ABCDE';
   color: any = '#';
 
   ativo: boolean = false;
-  
 
   constructor(private spotifyService: SpotifyService) {}
 
@@ -29,8 +27,6 @@ export class TopArtistasComponent implements OnInit {
   async buscarArtista() {
     const artistas = await this.spotifyService.buscarTopArtistas(1);
     if (!!artistas) this.topArtista = artistas.pop();
-
-    console.log('Top Artista', artistas);
   }
 
   randomColor() {
@@ -38,8 +34,5 @@ export class TopArtistasComponent implements OnInit {
     for (var i = 0; i < 4; i++) {
       this.color += this.letters[Math.floor(Math.random() * 10)];
     }
-
   }
-
 }
-

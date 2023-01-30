@@ -76,7 +76,7 @@ export class SpotifyService {
     return playlists.items.map(SpotifyPlaylistParaPlaylist);
   }
 
-  async buscarMusicas(offset = 0, limit = 50): Promise<IMusica[]> {
+  async buscarMusicas(offset = 1, limit = 50): Promise<IMusica[]> {
     const musicas = await this.spotifyAPI.getMySavedTracks({ offset, limit });
     return musicas.items.map((x) => SpotifyTrackParaMusica(x.track));
   }
